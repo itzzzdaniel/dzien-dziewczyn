@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Z Okazji Dnia Dziewczyn ❤️</title>
-    <!-- Import eleganckich czcionek z Google Fonts -->
+    <title>~Dandi❤️</title>
+    <!-- Import czcionek Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -17,37 +17,33 @@
         }
 
         body {
-            /* Fioletowo-różowy gradient */
             background: linear-gradient(135deg, #2b1055 0%, #591a75 35%, #9a1f6e 70%, #d81b60 100%);
             font-family: 'Poppins', sans-serif;
             color: #ffffff;
             min-height: 100vh;
             padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             overflow-x: hidden;
             position: relative;
         }
 
-        /* Kontener na całą stronę dla rozmycia tła */
+        /* Kontener główny strony */
         .page-content {
             width: 100%;
             max-width: 900px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
             transition: filter 0.4s ease;
         }
 
-        /* Rozmazanie tła gdy list jest otwarty */
-        body.letter-open .page-content,
-        body.letter-open .bg-elements {
+        /* Efekt rozmycia przy otwartym liście lub powiększonym zdjęciu */
+        body.modal-open .page-content,
+        body.modal-open .bg-elements {
             filter: blur(8px) brightness(0.6);
             pointer-events: none;
         }
 
-        /* Kontener na animowane elementy w tle */
+        /* Tło z latającymi ikonami */
         .bg-elements {
             position: fixed;
             top: 0;
@@ -57,7 +53,6 @@
             pointer-events: none;
             overflow: hidden;
             z-index: 0;
-            transition: filter 0.4s ease;
         }
 
         .floating-item {
@@ -85,35 +80,32 @@
             }
         }
 
-        .container {
-            width: 100%;
+        header {
             text-align: center;
-            position: relative;
-            z-index: 1;
         }
 
         header h1 {
             font-family: 'Great Vibes', cursive;
-            font-size: 3.8rem;
+            font-size: 3.5rem;
             color: #ffb7d5;
-            margin: 30px 0 10px 0;
+            margin: 20px 0 10px 0;
             text-shadow: 0 0 15px rgba(255, 183, 213, 0.4);
         }
 
         header p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-bottom: 25px;
             color: #e2c0e8;
             font-weight: 300;
         }
 
-        /* Nawigacja / Zakładki */
+        /* Menu / Nawigacja */
         .nav-tabs {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 35px;
+            gap: 10px;
+            margin-bottom: 30px;
         }
 
         .nav-btn {
@@ -121,7 +113,7 @@
             backdrop-filter: blur(8px);
             color: #ffffff;
             border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 12px 20px;
+            padding: 10px 18px;
             font-size: 0.95rem;
             border-radius: 30px;
             cursor: pointer;
@@ -144,11 +136,11 @@
         /* Treść zakładek */
         .tab-content {
             display: none;
-            animation: fadeIn 0.5s ease forwards;
         }
 
         .tab-content.active {
             display: block;
+            animation: fadeIn 0.4s ease forwards;
         }
 
         @keyframes fadeIn {
@@ -165,73 +157,65 @@
         /* Galeria Zdjęć */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .photo-card {
             background: rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(10px);
             padding: 12px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+            transition: transform 0.3s ease;
+            cursor: pointer;
         }
 
         .photo-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(216, 27, 96, 0.3);
+            transform: translateY(-5px) scale(1.02);
         }
 
         .photo-card img {
             width: 100%;
-            height: 220px;
+            height: 320px;
             object-fit: cover;
-            border-radius: 10px;
+            border-radius: 12px;
             display: block;
         }
 
-        /* Karty w sekcjach */
-        .spotify-card, .playlist-card, .song-card, .timer-card, .interactive-card {
+        /* Sekcje z kartami */
+        .spotify-card, .playlist-card, .song-card, .timer-card, .interactive-card, .flower-card {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(12px);
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 25px 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             text-align: center;
         }
 
-        .playlist-card h2, .song-card h2, .timer-card h2, .interactive-card h2 {
+        .playlist-card h2, .song-card h2, .timer-card h2, .interactive-card h2, .flower-card h2 {
             font-family: 'Great Vibes', cursive;
             font-size: 2.8rem;
             color: #ff9ebb;
             margin-bottom: 12px;
         }
 
-        .playlist-description {
-            font-size: 1.05rem;
-            color: #e2c0e8;
-            margin-bottom: 25px;
-            line-height: 1.6;
-            font-weight: 300;
-        }
-
-        /* Licznik Czasu */
-        .timer-subtitle {
+        .playlist-description, .timer-subtitle {
             font-size: 1rem;
             color: #e2c0e8;
             margin-bottom: 20px;
             font-weight: 300;
         }
 
+        /* Licznik Czasu */
         .timer-grid {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
             margin-top: 15px;
         }
@@ -239,153 +223,98 @@
         .timer-box {
             background: rgba(255, 255, 255, 0.15);
             border: 1px solid rgba(255, 255, 255, 0.25);
-            padding: 15px 20px;
-            border-radius: 16px;
-            min-width: 90px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            padding: 12px 18px;
+            border-radius: 14px;
+            min-width: 80px;
         }
 
         .timer-number {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 600;
             color: #ffb7d5;
             display: block;
-            line-height: 1.1;
         }
 
         .timer-label {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #ffffff;
             opacity: 0.8;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 5px;
         }
 
         .custom-song-text {
             font-family: 'Dancing Script', cursive;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             color: #ffd1dc;
-            margin-top: 20px;
-            line-height: 1.5;
-            text-shadow: 0 0 10px rgba(255, 183, 213, 0.3);
-        }
-
-        /* Sekcja z Lilią (GIF) */
-        .flower-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(12px);
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 30px 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            margin-bottom: 30px;
-            position: relative;
-        }
-
-        .flower-card h2 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 2.8rem;
-            color: #ff9ebb;
-            margin-bottom: 20px;
+            margin-top: 18px;
         }
 
         .flower-container {
             width: 100%;
             display: flex;
             justify-content: center;
-            align-items: center;
             padding: 10px 0;
         }
 
         .gif-frame {
-            padding: 6px;
-            background: linear-gradient(135deg, #ff4081, #ffb7d5, #9c27b0, #ff4081);
-            background-size: 300% 300%;
-            border-radius: 24px;
-            box-shadow: 0 0 25px rgba(255, 64, 129, 0.5), 0 0 45px rgba(156, 39, 176, 0.3);
-            animation: gradientGlow 6s ease infinite;
+            padding: 5px;
+            background: linear-gradient(135deg, #ff4081, #ffb7d5, #9c27b0);
+            border-radius: 20px;
             display: inline-block;
         }
 
-        @keyframes gradientGlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
         .lily-gif {
-            max-width: 320px;
+            max-width: 280px;
             width: 100%;
-            height: auto;
-            border-radius: 18px;
+            border-radius: 16px;
             display: block;
-            transition: transform 0.3s ease;
         }
 
         .interactive-btn {
             background: linear-gradient(45deg, #ff4081, #d81b60);
             color: white;
             border: none;
-            padding: 14px 28px;
-            font-size: 1rem;
+            padding: 12px 26px;
+            font-size: 0.95rem;
             border-radius: 30px;
             cursor: pointer;
-            transition: all 0.3s ease;
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
             box-shadow: 0 4px 15px rgba(216, 27, 96, 0.4);
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .interactive-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(255, 64, 129, 0.6);
         }
 
         #output-box {
-            margin-top: 20px;
-            padding: 15px;
+            margin-top: 18px;
+            padding: 12px;
             background: rgba(255, 255, 255, 0.15);
             border-radius: 12px;
-            font-size: 1.1rem;
-            min-height: 50px;
+            font-size: 1rem;
+            min-height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #ffffff;
-            font-weight: 400;
             border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
-        /* -------------------------------------------------- */
-        /* INTERAKCJA KOPERTY I POPUPU LISTU                 */
-        /* -------------------------------------------------- */
+        /* Koperta */
         .envelope-wrapper {
             position: relative;
-            width: 220px;
-            height: 140px;
-            margin: 35px auto 20px auto;
+            width: 200px;
+            height: 130px;
+            margin: 25px auto 10px auto;
             cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .envelope-wrapper:hover {
-            transform: scale(1.06);
         }
 
         .envelope-box {
-            position: absolute;
             width: 100%;
             height: 100%;
             background: linear-gradient(135deg, #d81b60, #ad1457);
             border-radius: 14px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.35);
             display: flex;
             align-items: center;
             justify-content: center;
             border: 2px solid rgba(255,255,255,0.2);
+            position: relative;
             overflow: hidden;
         }
 
@@ -396,32 +325,26 @@
             left: 0;
             width: 0;
             height: 0;
-            border-left: 110px solid transparent;
-            border-right: 110px solid transparent;
-            border-top: 75px solid #ff4081;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-top: 70px solid #ff4081;
         }
 
         .envelope-heart-seal {
             position: relative;
             z-index: 2;
-            font-size: 2.2rem;
-            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
-            animation: pulseHeart 2s infinite ease-in-out;
+            font-size: 2rem;
         }
 
-        @keyframes pulseHeart {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
-        }
-
-        /* OVERLAY (POPUP Z POWIĘKSZONYM LISTEM) */
-        .letter-modal-overlay {
+        /* Overlay dla Listu i Powiększonego Zdjęcia */
+        .letter-modal-overlay,
+        .photo-modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(15, 5, 25, 0.6);
+            background: rgba(15, 5, 25, 0.8);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -429,50 +352,83 @@
             z-index: 10000;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0.4s ease;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
 
-        .letter-modal-overlay.active {
+        .letter-modal-overlay.active,
+        .photo-modal-overlay.active {
             opacity: 1;
             visibility: visible;
         }
 
-        /* KARTA Z POWIĘKSZONYM LISTEM */
         .modal-letter-card {
             background: #fffdfa;
             color: #2c2c2c;
             width: 100%;
-            max-width: 450px;
-            padding: 35px 25px;
+            max-width: 420px;
+            padding: 30px 20px;
             border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(255, 183, 213, 0.3);
             text-align: center;
-            position: relative;
-            transform: scale(0.7) translateY(30px);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid #f3d5df;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
         }
 
         .letter-modal-overlay.active .modal-letter-card {
-            transform: scale(1) translateY(0);
+            transform: scale(1);
         }
 
         .modal-letter-card h3 {
             font-family: 'Great Vibes', cursive;
-            font-size: 3.2rem;
+            font-size: 3rem;
             color: #d81b60;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .modal-letter-card p {
             font-family: 'Dancing Script', cursive;
-            font-size: 1.55rem;
-            line-height: 1.6;
+            font-size: 1.5rem;
+            line-height: 1.5;
             color: #333;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .close-letter-btn {
+            background: linear-gradient(45deg, #ff4081, #d81b60);
+            color: white;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* Modal powiększonego zdjęcia */
+        .modal-photo-card {
+            max-width: 90vw;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-modal-overlay.active .modal-photo-card {
+            transform: scale(1);
+        }
+
+        .modal-photo-card img {
+            max-width: 100%;
+            max-height: 75vh;
+            border-radius: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            object-fit: contain;
+        }
+
+        .close-photo-btn {
+            margin-top: 15px;
             background: linear-gradient(45deg, #ff4081, #d81b60);
             color: white;
             border: none;
@@ -480,199 +436,161 @@
             font-size: 0.95rem;
             border-radius: 25px;
             cursor: pointer;
-            font-family: 'Poppins', sans-serif;
             font-weight: 600;
-            box-shadow: 0 4px 12px rgba(216, 27, 96, 0.3);
+            box-shadow: 0 4px 15px rgba(216, 27, 96, 0.5);
         }
 
         footer {
-            margin-top: auto;
-            padding: 20px;
-            font-size: 0.95rem;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9rem;
             color: #dda0dd;
-            position: relative;
-            z-index: 1;
         }
     </style>
 </head>
 <body>
 
-    <!-- Latające lilie, słuchawki i serduszka w tle -->
+    <!-- Animowane tło -->
     <div class="bg-elements">
-        <div class="floating-item" style="left: 8%; animation-delay: 0s; animation-duration: 14s;">🪷</div>
-        <div class="floating-item" style="left: 22%; animation-delay: 3s; animation-duration: 11s;">🎧</div>
-        <div class="floating-item" style="left: 38%; animation-delay: 1s; animation-duration: 15s;">💖</div>
-        <div class="floating-item" style="left: 55%; animation-delay: 5s; animation-duration: 12s;">🪷</div>
-        <div class="floating-item" style="left: 72%; animation-delay: 2s; animation-duration: 13s;">🎧</div>
-        <div class="floating-item" style="left: 88%; animation-delay: 4s; animation-duration: 16s;">✨</div>
+        <div class="floating-item" style="left: 8%; animation-delay: 0s;">🪷</div>
+        <div class="floating-item" style="left: 25%; animation-delay: 3s;">🎧</div>
+        <div class="floating-item" style="left: 45%; animation-delay: 1s;">💖</div>
+        <div class="floating-item" style="left: 65%; animation-delay: 5s;">🪷</div>
+        <div class="floating-item" style="left: 85%; animation-delay: 2s;">✨</div>
     </div>
 
-    <!-- Kontener całej zawartości strony (rozmazywany) -->
+    <!-- Główna treść -->
     <div class="page-content">
-        <div class="container">
-            <header>
-                <h1>Misia wszystkiego najlepszego z okazji dnia dziewczyn!!!</h1>
-                <p>Spełnienia marzeń i wszystkiego dobrego ❤️</p>
-            </header>
+        <header>
+            <h1>Misia wszystkiego najlepszego z okazji dnia dziewczyn!!!</h1>
+            <p>Spełnienia marzeń i wszystkiego co najlepsze ❤️</p>
+        </header>
 
-            <!-- Przełącznik Zakładek -->
-            <nav class="nav-tabs">
-                <button class="nav-btn active" onclick="switchTab('main', this)">Strona Główna</button>
-                <button class="nav-btn" onclick="switchTab('gallery', this)">Nasze Zdjęcia 📸</button>
-                <button class="nav-btn" onclick="switchTab('playlist', this)">Nasza Playlista 🎵</button>
-                <button class="nav-btn" onclick="switchTab('fun', this)">Niespodzianki 🎁</button>
-            </nav>
+        <!-- Nawigacja -->
+        <nav class="nav-tabs">
+            <button class="nav-btn active" onclick="switchTab('main', this)">Strona Główna</button>
+            <button class="nav-btn" onclick="switchTab('gallery', this)">Nasze Zdjęcia 📸</button>
+            <button class="nav-btn" onclick="switchTab('playlist', this)">Nasza Playlista 🎵</button>
+            <button class="nav-btn" onclick="switchTab('fun', this)">Niespodzianki 🎁</button>
+        </nav>
 
-            <!-- Zakładka 1: Strona Główna -->
-            <div id="main-tab" class="tab-content active">
-                <section class="spotify-card">
-                    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/1QlgXXEkByqhyjva5JRppf?utm_source=generator&si=df57ab8849a84769" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                </section>
+        <!-- ZAKŁADKA 1: Strona Główna -->
+        <div id="main-tab" class="tab-content active">
+            <section class="spotify-card">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1QlgXXEkByqhyjva5JRppf?utm_source=generator&si=df57ab8849a84769" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </section>
 
-                <section class="flower-card">
-                    <h2>Przynajmniej moge ci dać takie ;D ✨</h2>
-                    <div class="flower-container">
-                        <div class="gif-frame">
-                            <img class="lily-gif" src="lilia.gif" alt="Lilia GIF">
-                        </div>
+            <section class="flower-card">
+                <h2>Przynajmniej moge ci dać takie ;D ✨</h2>
+                <div class="flower-container">
+                    <div class="gif-frame">
+                        <img class="lily-gif" src="lilia.gif" alt="Lilia GIF">
                     </div>
-                    <div class="interactive-section" style="margin-top: 25px;">
-                        <button class="interactive-btn" onclick="drawReason()">Dlaczego Cię kocham?</button>
-                        <div id="output-box">Kliknij przycisk powyżej! ❤️</div>
-                    </div>
-                </section>
+                </div>
+                <div style="margin-top: 20px;">
+                    <button class="interactive-btn" onclick="drawReason()">Dlaczego Cię kocham?</button>
+                    <div id="output-box">Kliknij przycisk powyżej! ❤️</div>
+                </div>
+            </section>
 
-                <section class="timer-card">
-                    <h2>Jesteśmy Razem Już... ❤️</h2>
-                    <p class="timer-subtitle">Licznik bije od 15 lipca 2026 roku, godz. 13:00, tak samo jak moje serce ✨</p>
-                    
-                    <div class="timer-grid">
-                        <div class="timer-box">
-                            <span id="days" class="timer-number">0</span>
-                            <div class="timer-label">Dni</div>
-                        </div>
-                        <div class="timer-box">
-                            <span id="hours" class="timer-number">0</span>
-                            <div class="timer-label">Godzin</div>
-                        </div>
-                        <div class="timer-box">
-                            <span id="minutes" class="timer-number">0</span>
-                            <div class="timer-label">Minut</div>
-                        </div>
-                        <div class="timer-box">
-                            <span id="seconds" class="timer-number">0</span>
-                            <div class="timer-label">Sekund</div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-
-            <!-- Zakładka 2: Galeria Zdjęć -->
-            <div id="gallery-tab" class="tab-content">
-                <section class="gallery">
-                    <div class="photo-card"><img src="zdjecie1.jpg" alt="Zdjęcie 1"></div>
-                    <div class="photo-card"><img src="zdjecie2.jpg" alt="Zdjęcie 2"></div>
-                    <div class="photo-card"><img src="zdjecie3.jpg" alt="Zdjęcie 3"></div>
-                    <div class="photo-card"><img src="zdjecie4.jpg" alt="Zdjęcie 4"></div>
-                    <div class="photo-card"><img src="zdjecie5.png" alt="Zdjęcie 5"></div>
-                    <div class="photo-card"><img src="zdjecie6.png" alt="Zdjęcie 6"></div>
-                    <div class="photo-card"><img src="zdjecie7.png" alt="Zdjęcie 7"></div>
-                    <div class="photo-card"><img src="zdjecie8.png" alt="Zdjęcie 8"></div>
-                </section>
-            </div>
-
-            <!-- Zakładka 3: Playlista -->
-            <div id="playlist-tab" class="tab-content">
-                <section class="playlist-card">
-                    <h2>Nasza Wyjątkowa Playlista 🎶</h2>
-                    <p class="playlist-description">
-                        Oto piosenki, które przypominają mi o Tobie i naszych najpiękniejszych wspólnych chwilach. Każdy utwór to osobna historia i małe wspomnienie! ❤️
-                    </p>
-                    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/06VWidoUWayWtFTJYXku1t?utm_source=generator&si=b0e646efd1154ad4" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                </section>
-
-                <section class="song-card">
-                    <h2>Piosenka ✨</h2>
-                    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/43CIWpJaJHRcI4mUSjqgc2?utm_source=generator&si=dc40d495fa884660" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                    <p class="custom-song-text">
-                        "Nutka żebyś mogła sobie o mnie przypomnieć kiedy chcesz" ❤️
-                    </p>
-                </section>
-            </div>
-
-            <!-- Zakładka 4: Niespodzianki -->
-            <div id="fun-tab" class="tab-content">
+            <section class="timer-card">
+                <h2>Jesteśmy Razem Już... ❤️</h2>
+                <p class="timer-subtitle">Licznik bije od 15 lipca 2026 roku, godz. 13:00 ✨</p>
                 
-                <!-- Interakcja 1: Przycisk Buziaka z Wibracją -->
-                <section class="interactive-card">
-                    <h2>Wyślij mi Buziaka! 💋</h2>
-                    <p style="color: #e2c0e8; margin-bottom: 20px; font-weight: 300;">
-                        Dotknij przycisku poniżej, aby wysłać mi buziaka! Jeśli jesteś na telefonie, poczujesz wibrację!
-                    </p>
-                    <button class="interactive-btn" onclick="sendKiss(event)">Przytul & Busiaczek ❤️</button>
-                </section>
-
-                <!-- Interakcja 3: Uciekający przycisk NIE -->
-                <section class="interactive-card" style="min-height: 220px;">
-                    <h2>Szybkie Pytanie! 😇</h2>
-                    <p style="color: #e2c0e8; margin-bottom: 25px; font-weight: 300;">
-                        Czy jestem Twoim ulubionym chłopakiem?
-                    </p>
-                    <div style="display: flex; justify-content: center; gap: 20px; align-items: center; min-height: 60px;">
-                        <button class="interactive-btn" onclick="alert('Wiedziałem! 🥰 Wybrałaś jedyną słuszną odpowiedź! ❤️')">TAK! ❤️</button>
-                        <button id="noBtn" class="interactive-btn" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4);" ontouchstart="moveNoButton()" onclick="moveNoButton()">NIE 😜</button>
-                    </div>
-                </section>
-
-                <!-- Interakcja 4: Koperta z Listem (Po kliknięciu otwiera popup i rozmazuje tło) -->
-                <section class="interactive-card">
-                    <h2>Tajemnicza Koperta ✉️</h2>
-                    <p style="color: #e2c0e8; margin-bottom: 10px; font-weight: 300;">
-                        Dotknij koperty poniżej, aby otworzyć ukryty list!
-                    </p>
-
-                    <div class="envelope-wrapper" onclick="openLetter()">
-                        <div class="envelope-box">
-                            <span class="envelope-heart-seal">💌</span>
-                        </div>
-                    </div>
-                </section>
-
-            </div>
+                <div class="timer-grid">
+                    <div class="timer-box"><span id="days" class="timer-number">0</span><div class="timer-label">Dni</div></div>
+                    <div class="timer-box"><span id="hours" class="timer-number">0</span><div class="timer-label">Godzin</div></div>
+                    <div class="timer-box"><span id="minutes" class="timer-number">0</span><div class="timer-label">Minut</div></div>
+                    <div class="timer-box"><span id="seconds" class="timer-number">0</span><div class="timer-label">Sekund</div></div>
+                </div>
+            </section>
         </div>
 
-        <footer>
-            made with pure luv~dandi ❤️
-        </footer>
+        <!-- ZAKŁADKA 2: Galeria Zdjęć z funkcją kliknięcia w zdjęcie -->
+        <div id="gallery-tab" class="tab-content">
+            <section class="gallery">
+                <div class="photo-card" onclick="openPhoto('zdjecie1.jpg')"><img src="zdjecie1.jpg" alt="Zdjęcie 1"></div>
+                <div class="photo-card" onclick="openPhoto('zdjecie2.jpg')"><img src="zdjecie2.jpg" alt="Zdjęcie 2"></div>
+                <div class="photo-card" onclick="openPhoto('zdjecie3.jpg')"><img src="zdjecie3.jpg" alt="Zdjęcie 3"></div>
+                <div class="photo-card" onclick="openPhoto('zdjecie4.jpg')"><img src="zdjecie4.jpg" alt="Zdjęcie 4"></div>
+                <div class="photo-card" onclick="openPhoto('zdjecie5.jpeg')"><img src="zdjecie5.jpeg" alt="Zdjęcie 5"></div>
+                <div class="photo-card" onclick="openPhoto('zdjecie6.jpeg')"><img src="zdjecie6.jpeg" alt="Zdjęcie 6"></div>
+                <div class="photo-card" onclick="openPhoto('zdjecie7.jpeg')"><img src="zdjecie7.jpeg" alt="Zdjęcie 7"></div>
+                <div class="photo-card" onclick="openPhoto('zdjecie8.jpeg')"><img src="zdjecie8.jpeg" alt="Zdjęcie 8"></div>
+            </section>
+        </div>
+
+        <!-- ZAKŁADKA 3: Playlista -->
+        <div id="playlist-tab" class="tab-content">
+            <section class="playlist-card">
+                <h2>Nasza Wyjątkowa Playlista 🎶</h2>
+                <p class="playlist-description">Oto piosenki, które przypominają mi o Tobie! ❤️</p>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/06VWidoUWayWtFTJYXku1t?utm_source=generator&si=b0e646efd1154ad4" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </section>
+
+            <section class="song-card">
+                <h2>Piosenka ✨</h2>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/43CIWpJaJHRcI4mUSjqgc2?utm_source=generator&si=dc40d495fa884660" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <p class="custom-song-text">"Nutka żebyś mogła sobie o mnie przypomnieć kiedy chcesz" ❤️</p>
+            </section>
+        </div>
+
+        <!-- ZAKŁADKA 4: Niespodzianki -->
+        <div id="fun-tab" class="tab-content">
+            <section class="interactive-card">
+                <h2>Wyślij mi Buziaka! 💋</h2>
+                <p style="color: #e2c0e8; margin-bottom: 15px;">Dotknij przycisku poniżej!</p>
+                <button class="interactive-btn" onclick="sendKiss(event)">Przytul & Busiaczek ❤️</button>
+            </section>
+
+            <section class="interactive-card" style="min-height: 200px;">
+                <h2>Szybkie Pytanie! 😇</h2>
+                <p style="color: #e2c0e8; margin-bottom: 20px;">Czy jestem Twoim ulubionym chlopakiem?</p>
+                <div style="display: flex; justify-content: center; gap: 15px; align-items: center;">
+                    <button class="interactive-btn" onclick="alert('Wiedziałem! 🥰 Wybrałaś jedyną słuszną odpowiedź! ❤️')">TAK! ❤️</button>
+                    <button id="noBtn" class="interactive-btn" style="background: rgba(255,255,255,0.2);" ontouchstart="moveNoButton()" onclick="moveNoButton()">NIE 😜</button>
+                </div>
+            </section>
+
+            <section class="interactive-card">
+                <h2>Tajemnicza Koperta ✉️</h2>
+                <p style="color: #e2c0e8; margin-bottom: 10px;">Dotknij koperty, aby otworzyć ukryty list!</p>
+                <div class="envelope-wrapper" onclick="openLetter()">
+                    <div class="envelope-box">
+                        <span class="envelope-heart-seal">💌</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer>made with pure luv~dandi ❤️</footer>
     </div>
 
-    <!-- OVERLAY POJAWIAJĄCY SIĘ PO KLIKNIĘCIU KOPERTY -->
+    <!-- POPUP LISTU -->
     <div class="letter-modal-overlay" id="letterModal" onclick="closeLetter()">
         <div class="modal-letter-card" onclick="event.stopPropagation()">
             <h3>Dla Mojej Misi ❤️</h3>
-            <p>
-                Dziękuję, że po prostu jesteś. Sprawiasz, że każdy dzień jest o wiele jaśniejszy i lepszy! Pamiętaj, że zawsze jestem przy Tobie i możesz na mnie liczyć. ✨
-            </p>
+            <p>Dziękuję, że po prostu jesteś. Sprawiasz, że każdy dzień jest o wiele jaśniejszy i lepszy! Pamiętaj, że zawsze jestem przy Tobie i możesz na mnie liczyć. ✨</p>
             <button class="close-letter-btn" onclick="closeLetter()">Zamknij list ❤️</button>
         </div>
     </div>
 
+    <!-- POPUP POWIĘKSZONEGO ZDJĘCIA -->
+    <div class="photo-modal-overlay" id="photoModal" onclick="closePhoto()">
+        <div class="modal-photo-card" onclick="event.stopPropagation()">
+            <img id="modalImg" src="" alt="Powiększone zdjęcie">
+            <button class="close-photo-btn" onclick="closePhoto()">Zamknij ✖</button>
+        </div>
+    </div>
+
     <script>
-        // Skrypt obsługi zakładek
         function switchTab(tabId, btnElement) {
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById(tabId + '-tab').classList.add('active');
             btnElement.classList.add('active');
         }
 
-        // Skrypt z losowaniem powodów
         const powody = [
             "Za Twój piękny uśmiech, który rozświetla każdy mój dzień.",
             "Za to, że przy Tobie mogę być w 100% sobą.",
@@ -687,101 +605,79 @@
             document.getElementById('output-box').innerText = random;
         }
 
-        // Skrypt Licznika Czasu Razem (Od 15 Lipca 2026, godz. 13:00)
         const startDate = new Date('2026-07-15T13:00:00');
-
         function updateTimer() {
             const now = new Date();
             const diff = now - startDate;
-
             if (diff > 0) {
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-                const minutes = Math.floor((diff / (1000 * 60)) % 60);
-                const seconds = Math.floor((diff / 1000) % 60);
-
-                document.getElementById('days').innerText = days;
-                document.getElementById('hours').innerText = hours;
-                document.getElementById('minutes').innerText = minutes;
-                document.getElementById('seconds').innerText = seconds;
-            } else {
-                document.getElementById('days').innerText = 0;
-                document.getElementById('hours').innerText = 0;
-                document.getElementById('minutes').innerText = 0;
-                document.getElementById('seconds').innerText = 0;
+                document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+                document.getElementById('hours').innerText = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                document.getElementById('minutes').innerText = Math.floor((diff / (1000 * 60)) % 60);
+                document.getElementById('seconds').innerText = Math.floor((diff / 1000) % 60);
             }
         }
-
         setInterval(updateTimer, 1000);
         updateTimer();
 
-        // ----------------------------------------------------
-        // INTERAKCJA 1: Przycisk Buziaka z efektem i wibracją
-        // ----------------------------------------------------
         function sendKiss(event) {
-            if ("vibrate" in navigator) {
-                navigator.vibrate([100, 50, 100]);
-            }
-
+            if ("vibrate" in navigator) navigator.vibrate([100, 50, 100]);
             const clickX = event.clientX || (event.touches && event.touches[0].clientX) || window.innerWidth / 2;
             const clickY = event.clientY || (event.touches && event.touches[0].clientY) || window.innerHeight / 2;
 
-            for (let i = 0; i < 12; i++) {
+            for (let i = 0; i < 10; i++) {
                 const heart = document.createElement('div');
                 heart.innerText = ['❤️', '💋', '💖', '✨'][Math.floor(Math.random() * 4)];
                 heart.style.position = 'fixed';
-                heart.style.left = (clickX + (Math.random() * 60 - 30)) + 'px';
-                heart.style.top = (clickY + (Math.random() * 60 - 30)) + 'px';
-                heart.style.fontSize = (Math.random() * 18 + 22) + 'px';
+                heart.style.left = (clickX + (Math.random() * 40 - 20)) + 'px';
+                heart.style.top = (clickY + (Math.random() * 40 - 20)) + 'px';
+                heart.style.fontSize = '24px';
                 heart.style.pointerEvents = 'none';
-                heart.style.transition = 'transform 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 1s ease-out';
+                heart.style.transition = 'all 1s ease-out';
                 heart.style.zIndex = '9999';
-                
                 document.body.appendChild(heart);
 
                 setTimeout(() => {
-                    const moveX = (Math.random() - 0.5) * 220;
-                    const moveY = -180 - Math.random() * 100;
-                    heart.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.4) rotate(${Math.random() * 60 - 30}deg)`;
+                    heart.style.transform = `translate(${(Math.random() - 0.5) * 160}px, -150px) scale(1.3)`;
                     heart.style.opacity = '0';
                 }, 20);
 
-                setTimeout(() => heart.remove(), 1050);
+                setTimeout(() => heart.remove(), 1000);
             }
         }
 
-        // ----------------------------------------------------
-        // INTERAKCJA 3: Uciekający przycisk NIE
-        // ----------------------------------------------------
         function moveNoButton() {
             const btn = document.getElementById('noBtn');
-            const padding = 20;
-            const maxX = window.innerWidth - btn.offsetWidth - padding;
-            const maxY = window.innerHeight - btn.offsetHeight - padding;
-
-            const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
-            const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
-
+            const randomX = Math.max(20, Math.floor(Math.random() * (window.innerWidth - 100)));
+            const randomY = Math.max(20, Math.floor(Math.random() * (window.innerHeight - 50)));
             btn.style.position = 'fixed';
             btn.style.left = randomX + 'px';
             btn.style.top = randomY + 'px';
             btn.style.zIndex = '9999';
         }
 
-        // ----------------------------------------------------
-        // INTERAKCJA 4: OTWIERANIE I ZAMYKANIE POPUPU Z LISTEM
-        // ----------------------------------------------------
+        // Obsługa popupu z listem
         function openLetter() {
-            document.body.classList.add('letter-open');
+            document.body.classList.add('modal-open');
             document.getElementById('letterModal').classList.add('active');
-            if ("vibrate" in navigator) {
-                navigator.vibrate(60);
-            }
+            if ("vibrate" in navigator) navigator.vibrate(60);
         }
 
         function closeLetter() {
-            document.body.classList.remove('letter-open');
+            document.body.classList.remove('modal-open');
             document.getElementById('letterModal').classList.remove('active');
+        }
+
+        // Obsługa powiększania zdjęć z galerii
+        function openPhoto(src) {
+            document.getElementById('modalImg').src = src;
+            document.body.classList.add('modal-open');
+            document.getElementById('photoModal').classList.add('active');
+            if ("vibrate" in navigator) navigator.vibrate(40);
+        }
+
+        function closePhoto() {
+            document.body.classList.remove('modal-open');
+            document.getElementById('photoModal').classList.remove('active');
         }
     </script>
 </body>
